@@ -53,14 +53,18 @@ body {
   }
 
   @for $i from 28 through 31 {
-    &--month-length-#{$i} &__day:nth-child(n + #{$i + 1}) {
-      display: none;
+    &--month-length-#{$i} {
+      & > .calendar__day:nth-child(n + #{$i + 1}) {
+        display: none;
+      }
     }
   }
 
   @each $day, $index in (sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6) {
-    &--start-#{$day} &__day:first-child {
-      margin-left: calc((#{$day-size} + #{$border-width} * 2 + #{$gap}) * #{$index});
+    &--start-#{$day} {
+      & > .calendar__day:first-child {
+        margin-left: calc((#{$day-size} + #{$border-width} * 2 + #{$gap}) * #{$index});
+      }
     }
   }
 }
